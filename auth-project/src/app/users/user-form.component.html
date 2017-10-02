@@ -1,0 +1,23 @@
+<form [formGroup]="userForm"  *ngIf="newUser"  (ngSubmit)="signup()">
+  <h3>New User Signup</h3>
+  <p (click)="toggleForm()">Already Registered?</p>
+  <hr>
+  <md-form-field>
+    <input mdInput placeholder="Email" type="email"
+    formControlName="email" required>
+  </md-form-field>
+  <div *ngIf="formErrors.email">
+    {{ formErrors.email }}
+  </div>
+  <md-form-field>
+    <input mdInput placeholder="Password" type="password"
+    formControlName="password" required>
+  </md-form-field>
+  <div *ngIf="formErrors.password">
+    {{ formErrors.password }}
+  </div>
+  <button md-raised-button color="accent" type="submit"  [disabled]="!userForm.valid">Submit</button>
+  <span *ngIf="userForm.valid" >Form is valid</span>
+  <p *ngIf="!passReset && userForm.controls.email.valid" (click)="resetPassword()">Reset Password for {{userForm.value.email}}</p>
+  <p *ngIf="passReset" >Reset requested. Check your email instructions.</p>
+</form>
