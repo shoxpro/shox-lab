@@ -1,0 +1,13 @@
+<div *ngIf="!auth.currentUser; else alreadyLoggedIn">
+        <button (click)="signInWithGoogle()">
+          Connect Google
+        </button>
+
+        <app-user-form></app-user-form>
+</div>
+  
+      <ng-template #alreadyLoggedIn>
+          <p class="text-success">
+            Already logged in!
+          </p>
+        </ng-template>
